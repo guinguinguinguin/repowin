@@ -1,0 +1,25 @@
+.logo-first-half {
+  font-family: TacoBellDisplayWide, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: xx-large;
+  color: #b91836;
+}
+.logo-second-half {
+  font-family: Snicker, Geneva, Tahoma, sans-serif;
+  font-size: xx-large;
+  color: #b91836;
+}
+.subheader {
+  background-color: #b91836;
+  height: 3vh;
+}
+.navbar-nav  {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: larger;
+  letter-spacing: 2px;
+  color: #000000 !important;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  border-bottom: 4px solid #F4C127;
+}
