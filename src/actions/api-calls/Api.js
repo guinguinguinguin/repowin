@@ -9,6 +9,7 @@ export function getOrganizationsById(organizationId) {
         credentials: 'same-origin',
         headers: {
             Accept: 'application/json',
+            Authorization: `Basic ${process.env.GITHUB_USERNAME}:${process.env.GITHUB_ACCESS_TOKEN}`
         },
     });
 }
@@ -20,6 +21,7 @@ export function getOrganizationByName(orgName) {
         credentials: 'same-origin',
         headers: {
             Accept: 'application/json',
+            Authorization: `Basic ${process.env.GITHUB_USERNAME}:${process.env.GITHUB_ACCESS_TOKEN}`
         },
     });
 }

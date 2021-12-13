@@ -21,6 +21,14 @@ export const loadOrganizationByNameFailure = organization => ({
     payload: organization,
 });
 
+export const clearResults = () => ({
+    type: types.CLEAR_SEARCH
+});
+
+export const clearSearchResults = () => dispatch => {
+    dispatch(clearResults());
+}
+
 export const searchOrganizationByIdResults = (searchQuery) => dispatch => api.getOrganizationsById(searchQuery)
     .then((response) => {
         if (!response.ok) {
