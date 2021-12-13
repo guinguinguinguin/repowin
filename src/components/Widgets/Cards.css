@@ -1,0 +1,16 @@
+.avatar-img {
+    width: 50px;
+    height: 50px;
+    vertical-align: text-top;
+}
+.followers-header {
+    text-align: right;
+}
+.primary-header {
+    font-weight: bold;
+    font-size: large;
+    color: #b91836;
+}
+.right-card-side {
+    font-size: small;
+}
