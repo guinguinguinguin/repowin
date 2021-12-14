@@ -21,6 +21,16 @@ export const loadOrganizationByNameFailure = organization => ({
     payload: organization,
 });
 
+export const loadReposByOrgNameSuccess = repos => ({
+    type: types.LOAD_REPOS_DATA_SUCCESS,
+    payload: repos,
+});
+
+export const loadReposByOrgNameFailure = repos => ({
+    type: types.LOAD_REPOS_DATA_SUCCESS,
+    payload: repos,
+});
+
 export const clearResults = () => ({
     type: types.CLEAR_SEARCH
 });
@@ -46,19 +56,36 @@ export const searchOrganizationByIdResults = (searchQuery) => dispatch => api.ge
         console.log('Error while retrieving search results for the organization ID entered: ', err);
     });
 
-    export const searchOrganizationByName = (searchQuery) => dispatch => api.getOrganizationByName(searchQuery)
-        .then((response) => {
-            if (!response.ok) {
-                return {};
-            }
-            return response;
-        })
-        .then(res => res.json())
-        .then((data) => {
-            dispatch(loadOrganizationByNameResultsSuccess(data));
-            return data;
-        })
-        .catch((err) => {
-            dispatch(loadOrganizationByNameFailure(err))
-            console.log('Error while retrieving organization by name. ', err);
-        });
+export const searchOrganizationByName = (searchQuery) => dispatch => api.getOrganizationByName(searchQuery)
+    .then((response) => {
+        if (!response.ok) {
+            return {};
+        }
+        return response;
+    })
+    .then(res => res.json())
+    .then((data) => {
+        dispatch(loadOrganizationByNameResultsSuccess(data));
+        return data;
+    })
+    .catch((err) => {
+        dispatch(loadOrganizationByNameFailure(err))
+        console.log('Error while retrieving organization by name. ', err);
+    });
+
+export const searchRepositoriesByOrgName = (searchQuery) => dispatch => api.getReposByName(searchQuery)
+    .then((response) => {
+        if (!response.ok) {
+            return {};
+        }
+        return response;
+    })
+    .then(res => res.json())
+    .then((data) => {
+        dispatch(loadReposByOrgNameSuccess(data));
+        return data;
+    })
+    .catch((err) => {
+        dispatch(loadReposByOrgNameFailure(err))
+        console.log('Error while retrieving organization by name. ', err);
+    });

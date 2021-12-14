@@ -29,7 +29,7 @@ export default function Header() {
                 </Col>
                 <Col xs={4} md={6}>
                     <Nav className="me-auto nav-link">
-                        <Nav.Link href="#">Home</Nav.Link>
+                        <Nav.Link href="#" className="active">Home</Nav.Link>
                         <Nav.Link href="#about">About</Nav.Link>
                     </Nav>
                 </Col>
@@ -48,7 +48,6 @@ export default function Header() {
             </Container>
         </Navbar>
         <div className="subheader">
-
         </div>
     </div>
   );

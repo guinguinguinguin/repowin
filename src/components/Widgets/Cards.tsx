@@ -4,12 +4,12 @@ import './Cards.css';
 import PersonIcon from '@mui/icons-material/Person';
 
 export default function Cards(props?: any) {
-    const { avatar, primaryHeader, description } = props;
+    const { avatar, name, id, primaryHeader, description, onClick } = props;
 
     return (
-        <Container fluid className="card-container">
+        <Container fluid className="card-container" onClick={onClick && onClick}>
             <Row>
-                <Col xs={12} sm={3} lg={3} xl={2}>
+                <Col xs={12} sm={3} md={4} lg={3}>
                     <img
                         src={avatar}
                         className="avatar-img"
@@ -17,10 +17,10 @@ export default function Cards(props?: any) {
                 </Col>
                 <Col xs={true} sm={9} md={true} className="right-card-side">
                     <Row>
-                        <Col sm={12} lg={true} className="primary-header wrap-text">
+                        <Col sm={12} md={9} className="primary-header wrap-text">
                             {primaryHeader}
                         </Col>
-                        <Col xs={true} className="followers-header d-none d-lg-block d-xl-block">
+                        <Col xs={true} className="followers-header d-none d-xl-block">
                             {Math.floor(Math.random() * 100)} <PersonIcon fontSize="small"/>
                         </Col>
                     </Row>

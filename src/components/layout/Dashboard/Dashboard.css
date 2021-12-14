@@ -1,0 +1,48 @@
+.highlight-text {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 14px;
+    color: #B91836;
+}
+.info-container {
+    border-radius: 9px;
+    padding: 2%;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px #707070;
+    max-height: 80vh;
+}
+.rounded-img {
+    border-radius: 50%;
+    width: 50%;
+}
+.jumbo-text {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 65px;
+}
+.primary-text {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 35px;
+}
+.secondary-text {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 16px;
+    color: #5c5a5a;
+}
+#unverified-badge {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    color: #A5A5A5;
+}
+#org-linkage {
+    vertical-align: text-top;
+    transform: rotate(45deg);
+    font-size: x-large;
+}
+#repo-table-container {
+    overflow: auto;
+    max-height: 400px;
+}

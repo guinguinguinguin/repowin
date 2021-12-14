@@ -25,3 +25,15 @@ export function getOrganizationByName(orgName) {
         },
     });
 }
+
+export function getReposByName(orgName) {
+    const url = sprintf(config.apiGateway.getReposByName, {orgName});
+
+    return fetch(url, {
+        credentials: 'same-origin',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Basic ${process.env.GITHUB_USERNAME}:${process.env.GITHUB_ACCESS_TOKEN}`
+        },
+    });
+}

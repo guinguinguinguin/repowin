@@ -5,9 +5,11 @@ const maxResults = 10;
 const config= {
     apiGateway: {
         getOrganizationsById: `${appPrefix}/organizations?per_page=${maxResults}&since=%(organizationId)s`,
-        getOrganizationsByName: `${appPrefix}/organizations?since=%(orgName)s`,
+        getOrganizationsByName: `${appPrefix}/orgs/%(orgName)s`,
+        getReposByName: `${appPrefix}/orgs/%(orgName)s/repos`,
     },
-    maxResults: maxResults
+    maxResults: maxResults,
+    repoTableHeaders: ['Name', 'Language', 'Open Issues', 'Updated', 'Clone']
 };
 
 export default config;

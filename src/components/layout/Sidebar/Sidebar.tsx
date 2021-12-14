@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
-import { searchOrganizationByIdResults, clearSearchResults } from '../../../actions/handler/organization-handler';
+import { searchOrganizationByIdResults, searchOrganizationByName, searchRepositoriesByOrgName, clearSearchResults } from '../../../actions/handler/organization-handler';
 import Cards from '../../Widgets/Cards';
 import EmptySidebar from "./EmptySidebar";
 import config from "../../../constants/config";
@@ -36,7 +36,7 @@ export default function Sidebar() {
     }
   };
 
-  const handleNextPagination = () => {
+  const handleNextPagination = async () => {
     if (isFirstPage) setIsFirstPage(false);
     const newPreviousPagesFirstOrgIds = [...previousPagesFirstOrdIds];
     newPreviousPagesFirstOrgIds.unshift(searchResults[0].id);
@@ -46,13 +46,20 @@ export default function Sidebar() {
   };
 
   const handlePreviousPagination = () => {
-    dispatch(searchOrganizationByIdResults(previousPagesFirstOrdIds[0]));
+    dispatch(searchOrganizationByIdResults(previousPagesFirstOrdIds[0] - 1));
+  
     const newPreviousPagesFirstOrgIds = [...previousPagesFirstOrdIds];
     newPreviousPagesFirstOrgIds.shift();
     setPreviousPagesFirstOrdIds(newPreviousPagesFirstOrgIds);
+
     if (newPreviousPagesFirstOrgIds.length === 0) {
       setIsFirstPage(true);
     }
+  };
+
+  const saveClickedOrganization = (orgName: string) => {
+    dispatch(searchOrganizationByName(orgName));
+    dispatch(searchRepositoriesByOrgName(orgName));
   };
 
   const renderResults = () => {
@@ -66,6 +73,7 @@ export default function Sidebar() {
             className="mt-2"
           >
             <Cards
+              onClick={() => {saveClickedOrganization(login)}}
               primaryHeader={login}
               description={description}
               repos={repos_url}
@@ -89,15 +97,9 @@ export default function Sidebar() {
     }
   }, [searchResults[searchResults.length -1]])
 
-  useEffect(() => {
-    if (searchResults.length > 0) {
-      setpreviousPageLastOrgId(searchResults[searchResults.length -1].id)
-    }
-  }, [searchResults[searchResults.length -1]])
-
   return (
-    <Container fluid className="full-height border-end">
-      <InputGroup className="psb-3">
+    <Container fluid className="full-height">
+      <InputGroup className="py-3">
         <FormControl
           placeholder="Search by organization ID..."
           aria-label="Search by organization ID..."
@@ -125,7 +127,7 @@ export default function Sidebar() {
         )
       }
       {
-        searchResults.length === 0 && searchQuery && (
+        searchResults.length === 0 && searchQuery && !timerId && (
           <EmptySidebar isEmptyResults={true} />
         )
       }

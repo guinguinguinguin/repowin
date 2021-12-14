@@ -1,8 +1,9 @@
 import types from '../constants/action-types';
-import { Organization } from '../interfaces/interfaces';
 
 const initialState = {
-    organizationsResults: []
+    organizationsResults: [],
+    organizationSelected: {},
+    organizationSelectedRepos: []
 };
 
 const appReducer = (state = initialState, action: any) => {
@@ -15,13 +16,22 @@ const appReducer = (state = initialState, action: any) => {
         case types.CLEAR_SEARCH:
             return {
                 ...state,
-                organizationsResults: []
+                organizationsResults: [],
             }
-        // case types.LOAD_ORGANIZATION_DATA_SUCCESS:
-        //     return {
-        //         ...state,
-        //         organizations
-        //     }
+        case types.LOAD_ORGANIZATION_DATA_SUCCESS:
+            localStorage.setItem('SELECTED_ORG', action.payload);
+            
+            return {
+                ...state,
+                organizationSelected: action.payload
+            }
+        case types.LOAD_REPOS_DATA_SUCCESS:
+            localStorage.setItem('SELECTED_ORG_REPOS', action.payload);
+
+            return {
+                ...state,
+                organizationSelectedRepos: action.payload
+            }
         default:
             return state;
     }
