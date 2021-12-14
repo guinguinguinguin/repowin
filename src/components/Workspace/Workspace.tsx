@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Col } from 'react-bootstrap';
-import Header from './Header/Header';
-import Sidebar from './Sidebar/Sidebar';
+import Header from '../layout/Header/Header';
+import Sidebar from '../layout/Sidebar/Sidebar';
 import './Workspace.css';
 
 export default function Workspace(props: any) {
@@ -9,11 +9,11 @@ export default function Workspace(props: any) {
     <div>
        <Header />
        <Container fluid>
-         <Col sm={3} className="mt-2">
+         <Col sm={3} className="mt-3">
           <Sidebar />
          </Col>
          <Col>
-          {/* <Dashboard /> */}
+          <Dashboard />
          </Col>
        </Container>
     </div>

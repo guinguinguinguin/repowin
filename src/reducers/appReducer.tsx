@@ -12,6 +12,11 @@ const appReducer = (state = initialState, action: any) => {
                 ...state,
                 organizationsResults: action.payload
             }
+        case types.CLEAR_SEARCH:
+            return {
+                ...state,
+                organizationsResults: []
+            }
         // case types.LOAD_ORGANIZATION_DATA_SUCCESS:
         //     return {
         //         ...state,

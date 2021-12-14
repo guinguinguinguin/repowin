@@ -14,3 +14,8 @@
 .right-card-side {
     font-size: small;
 }
+.wrap-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
